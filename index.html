@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bom Jardim - Página Inicial</title>
+    <link rel="icon" type="image/png" href="imagens/IEADEM(fundo).png"/>
+</head>
+<body style="background-color: lightsteelblue;">
+    <center><img style='width:200px;' src="imagens/IEADEM(fundo).png"/>
+    <h2><b>IGREJA EVANGÉLICA ASSEMBLÉIA DE DEUS</b></h2>
+    <h1><b>CONGREGAÇÃO DO BOM JARDIM I</b></h1>
+    <h3><b>Av. Alberto Maranhão, s/n, Bom Jardim, Mossoró-RN</b></h3>
+    </center>
+    <center><form action="buscar_nome.php" method="POST" style="margin-left: -270px;margin-top: 80px;">
+        <b>Buscar Nome: <input type="text" name="nomeMembro" id="buscarMembro" required style="height: 18px;"></b>
+        <input type="submit" value="Buscar" style="width: 90px; height: 30px;">
+    </form>
+    <form action="listar_todos.php" style="margin-left: 325px; margin-top: -30px;">
+        <input type="submit" value="Listar Todos" style="width: 120px; height: 30px;">
+    </form></center>
+    <br>
+    <center><form action="buscar_categoria.php" method="POST" style="margin-left: -305px;margin-top: 0px;">
+        <b>Buscar Categoria: </b><select name="categoriaMembro" style="width: 180px; height: 20px;">
+            <option value=""> Selecione a categoria</option>
+            <option value="Crianças"> Crianças</option>
+            <option value="Adolescentes"> Adolescentes</option>
+            <option value="Jovens"> Jovens</option>
+            <option value="Adultos"> Adultos</option>
+        </select>
+        <input type="submit" value="Buscar" style="width: 90px; height: 30px;">
+    </form></center>
+    <center><form action="formulario_membro.html" style="margin-left: 330px; margin-top: -30px;">
+        <input type="submit" value="Cadastrar Novo Membro" style="width: 180px; height: 30px;">
+    </form></center>
+    <br>
+    <center><form action="buscar_situacao.php" method="POST" style="margin-left: -300px;margin-top: 0px;">
+        <b>Buscar Situação: </b><select name="situacaoMembro" style="width: 180px; height: 20px;">
+            <option value=""> Selecione a situação</option>
+            <option value="Membro"> Membro</option>
+            <option value="Congregado"> Congregado</option>
+        </select>
+        <input type="submit" value="Buscar" style="width: 90px; height: 30px;">
+    </form></center>
+    <br>
+    <center><form action="buscar_obreiro.php" method="POST" style="margin-left: -300px;margin-top: 0px;">
+        <b>Buscar Obreiro: </b><select name="membroObreiro" style="width: 180px; height: 20px;">
+            <option value=""> Selecione a função</option>
+            <option value="Auxiliar"> Auxiliar</option>
+            <option value="Diácono"> Diácono</option>
+            <option value="Presbítero"> Presbítero</option>
+            <option value="Evangelista"> Evangelista</option>
+        </select>
+        <input type="submit" value="Buscar" style="width: 90px; height: 30px;">
+    </form></center>    
+</body>
+</html>
