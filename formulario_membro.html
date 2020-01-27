@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" type="text/css" href="estilo.css"/>
+    <title>Bom Jardim - Cadastrar Membro</title>
+    <style>
+        th, td {border-style: solid; border-color:lightgray;}
+        td {background-color: lightgray;}
+        tr {text-align: justify;}
+        tr:nth-child(odd) {background-color: white;}
+        tr:nth-child(even) {background-color:lightgray;}
+        tr th {text-align: end;}
+    </style>
+    <script type="text/javascript">
+        function MascaraTelefone()
+        {
+            var CampoFone = document.getElementById("fone");
+            var Fone = CampoFone.value;
+            
+            if(Fone.length == 1)
+            {
+                Fone = "(" + Fone
+                CampoFone.value = Fone;
+                return true;
+            }
+            if(Fone.length == 3)
+            {
+                Fone = Fone + ") "
+                CampoFone.value = Fone;
+                return true;
+            }
+            if(Fone.length == 10)
+            {
+                Fone = Fone + "-"
+                CampoFone.value = Fone;
+                return true;
+            }
+
+        }
+        function MascaraCep()
+        {
+            var CampoCep = document.getElementById("cep")
+            var Cep = CampoCep.value;
+
+            if(Cep.length == 5)
+            {
+                Cep = Cep + "-"
+                CampoCep.value = Cep;
+                return true;
+            }
+        }
+
+        document.getElementById("listarTodos").style.display = "none"; 
+
+        function habilitarNomeConjuge()
+        {
+            if(document.getElementById('Sim').checked == true)
+            {
+                document.getElementById('nomeConjuge').disabled = false;
+                document.getElementById('nomeConjuge').required = true;
+            }
+            if(document.getElementById('Não').checked == true)
+            {
+                document.getElementById('nomeConjuge').disabled = true;
+                document.getElementById('nomeConjuge').value = '';
+            }
+        }
+
+        function habilitarFuncaoObreiro()
+        {
+            if(document.getElementById('obreiroSim').checked == true)
+            {
+                document.getElementById('funcaoObreiro1').disabled = false;
+                document.getElementById('funcaoObreiro2').disabled = false;
+                document.getElementById('funcaoObreiro3').disabled = false;
+                document.getElementById('funcaoObreiro4').disabled = false;
+                document.getElementById('funcaoObreiro1').checked = true;
+            }
+            if(document.getElementById('obreiroNão').checked == true)
+            {
+                document.getElementById('funcaoObreiro1').disabled = true;
+                document.getElementById('funcaoObreiro2').disabled = true;
+                document.getElementById('funcaoObreiro3').disabled = true;
+                document.getElementById('funcaoObreiro4').disabled = true;
+                document.getElementById('funcaoObreiro1').checked = false;
+                document.getElementById('funcaoObreiro2').checked = false;
+                document.getElementById('funcaoObreiro3').checked = false;
+                document.getElementById('funcaoObreiro4').checked = false;
+            }
+        }
+    </script>
+</head>
+<body style="background-color: lightsteelblue;">
+    <center><img style='width:200px;' src="imagens/IEADEM(fundo).png"/></center>
+    <center><h1>Ficha Cadastral</h1></center>
+    <form action="cadastrar_membro.php" method="POST" enctype="multipart/form-data">
+        <center>
+            <table>
+                <tr>
+                    <th>
+                        Nome:
+                    </th>
+                    <td>
+                        <input type="text" name="nome" size="52" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Categoria:
+                    </th>
+                    <td>
+                        <input type="radio" name="categoria" value="Crianças" checked> Crianças
+                        <input type="radio" name="categoria" value="Adolescentes"> Adolescentes
+                        <input type="radio" name="categoria" value="Jovens"> Jovens
+                        <input type="radio" name="categoria" value="Adultos"> Adultos
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Sexo:
+                    </th>
+                    <td>
+                        <input type="radio" name="sexo" value="Masculino" checked> Masculino
+                        <input type="radio" name="sexo" value="Feminino"> Feminino
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Nome do Pai:
+                    </th>
+                    <td>
+                        <input type="text" name="nomePai" size="52" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Nome da Mãe:
+                    </th>
+                    <td>
+                        <input type="text" name="nomeMae" size="52" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Naturalidade:
+                    </th>
+                    <td>
+                        <input type="text" name="naturalidade" size="52" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Telefone:
+                    </th>
+                    <td>
+                        <input id="fone" type="text" name="fone" size="52" onkeyup="MascaraTelefone(this)" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Endereco:
+                    </th>
+                    <td>
+                        <input type="text" name="endereco" size="52" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Bairro:
+                    </th>
+                    <td>
+                        <input type="text" name="bairro" size="52" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        CEP:
+                    </th>
+                    <td>
+                        <input id="cep" type="text" name="cep" size="52" onkeyup="MascaraCep(this)" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Escolaridade:
+                    </th>
+                    <td>
+                        <input type="radio" name="escolaridade" value="1ºGrau" checked> 1ºGrau
+                        <input type="radio" name="escolaridade" value="2ºGrau"> 2ºGrau
+                        <input type="radio" name="escolaridade" value="Técnico"> Técnico
+                        <input type="radio" name="escolaridade" value="Superior"> Superior
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Profissão:
+                    </th>
+                    <td>
+                        <input type="text" name="profissao" size="52" >
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Estado Civil:
+                    </th>
+                    <td>
+                        <input type="radio" name="estadoCivil" value="Solteiro(a)" checked> Solteiro(a)
+                        <input type="radio" name="estadoCivil" value="Divorciado(a)"> Divorciado(a)
+                        <input type="radio" name="estadoCivil" value="Casado(a)"> Casado(a)
+                        <input type="radio" name="estadoCivil" value="Viúvo(a)"> Viúvo(a)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Cônjuge Evangélico:
+                    </th>
+                    <td>
+                        <input type="radio" name="conjugeEvangelico" onclick="habilitarNomeConjuge()" id="Sim" value="Sim"> Sim
+                        <input type="radio" name="conjugeEvangelico" onclick="habilitarNomeConjuge()" id="Não" value="Não" checked> Não
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Nome do Cônjuge:
+                    </th>
+                    <td>
+                        <input type="text" name="nomeConjuge" size="52" id="nomeConjuge" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Data de Casamento:
+                    </th>
+                    <td>
+                        <input type="date" name="dataCasamento">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Numero de Filhos:
+                    </th>
+                    <td>
+                        <input type="text" name="numeroFilhos" size="52">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Data de Nascimento:
+                    </th>
+                    <td>
+                        <input type="date" name="dataNascimento" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Data de Decisão:
+                    </th>
+                    <td>
+                        <input type="date" name="dataDecisao">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Data de Batismo em Águas:
+                    </th>
+                    <td>
+                        <input type="date" name="dataBatismoAguas">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Data de Batismo no Espírito Santo:
+                    </th>
+                    <td>
+                        <input type="date" name="dataBatismoEspiritoSanto">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Situacão:
+                    </th>
+                    <td>
+                        <input type="radio" name="situacao" value="Membro"> Membro
+                        <input type="radio" name="situacao" value="Congregado" checked> Congregado
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Obreiro:
+                    </th>
+                    <td>
+                        <input type="radio" name="obreiro" onclick="habilitarFuncaoObreiro()" id="obreiroSim" value="Sim"> Sim
+                        <input type="radio" name="obreiro" onclick="habilitarFuncaoObreiro()" id="obreiroNão" value="Não" checked> Não
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Função do Obreiro:
+                    </th>
+                    <td>
+                        <input type="radio" name="funcaoObreiro" id="funcaoObreiro1" value="Auxiliar" disabled> Auxiliar
+                        <input type="radio" name="funcaoObreiro" id="funcaoObreiro2" value="Diácono" disabled> Diácono
+                        <input type="radio" name="funcaoObreiro" id="funcaoObreiro3" value="Presbítero" disabled> Presbítero
+                        <input type="radio" name="funcaoObreiro" id="funcaoObreiro4" value="Evangelista" disabled> Evangelista
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Cargo:
+                    </th>
+                    <td>
+                        <input type="text" name="cargo" size="52" id="cargo">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Observações:
+                    </th>
+                    <td>
+                        <input type="text" name="observacoes" size="52">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Foto:
+                    </th>
+                    <td>
+                        <input type="file" name="foto">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="Cadastrar Membro" style="width: 200px; height: 30px;">
+            <br><br>
+        </center>
+    </form>
+    <center><a href="index.html" style="color: inherit; text-decoration: none;" id="inicio"><label for="inicio"><button style="width:200px; height:30px; margin-top:10px;">Voltar para a página inicial</button></label></a></center>
+</body>
+</html>
